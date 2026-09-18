@@ -1,0 +1,22 @@
+
+
+cat > .gitignore <<'
+bin/
+bin/
+obj/
+.idea/
+.vscode/
+.vscode/
+.DS_Store
+.DS_Store
+*.user
+.suo
+*.suo
+
+*.suo
+*.suo
+TestResults/
+TestResults/
+state.json
+state.json
+deliveries.log
