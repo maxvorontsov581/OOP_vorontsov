@@ -80,10 +80,10 @@ public static class SimpleMenu
     private static void PrintMenu(DeliveryService service)
     {
         Console.WriteLine();
-        Console.WriteLine("================ MENU ================");
+        Console.WriteLine("--- Меню ---");
         Console.WriteLine($"Заказов: {service.Orders.Count}, транспорт: {service.Vehicles.Count}, выручка: {service.Revenue:0.00}");
         Console.WriteLine($"Текущий тариф: {service.TariffName}");
-        Console.WriteLine("1  - создать простой заказ");
+        Console.WriteLine("1  - создать заказ");
         Console.WriteLine("2  - показать заказы");
         Console.WriteLine("3  - подобрать транспорт первому новому заказу");
         Console.WriteLine("4  - добавить услуги первому назначенному заказу");
@@ -94,8 +94,8 @@ public static class SimpleMenu
         Console.WriteLine("9  - показать парк");
         Console.WriteLine("10 - обслуживание транспорта");
         Console.WriteLine("11 - сменить тариф");
-        Console.WriteLine("12 - сохранить JSON");
-        Console.WriteLine("13 - загрузить JSON");
+        Console.WriteLine("12 - сохранить");
+        Console.WriteLine("13 - загрузить");
         Console.WriteLine("0  - выход");
         Console.Write("Команда: ");
     }

@@ -6,7 +6,7 @@ public sealed class Demo
 {
     public DeliveryService Run()
     {
-        Console.WriteLine("=== ООП: демонстрационный запуск ===\n");
+        Console.WriteLine("=== Демо ===\n");
 
         DeliveryService service = new(new StandardTariff());
         ConsoleNotifier console = new();
@@ -51,7 +51,7 @@ public sealed class Demo
         Console.WriteLine("\nConsoleNotifier отписан от OrderCreated.");
 
         ShowExceptions();
-        Console.WriteLine("\n=== Демо завершено. Дальше можно пользоваться меню ===");
+        Console.WriteLine("\n=== Конец демо ===");
         return loaded;
     }
 
@@ -140,7 +140,7 @@ public sealed class Demo
     private static List<Order> CreateOrders(DeliveryService service, Customer ivan, Customer anna,
         Customer oleg, List<Cargo> cargo, Route longRoute, Route shortRoute)
     {
-        Console.WriteLine("\n--- Создание пяти нормальных заказов ---");
+        Console.WriteLine("\n--- Создание заказов ---");
 
         return new List<Order>
         {
@@ -181,19 +181,19 @@ public sealed class Demo
 
     private static void RunDelivery(DeliveryService service, Order order)
     {
-        Console.WriteLine("\n--- Полный жизненный цикл заказа ---");
+        Console.WriteLine("\n--- Доставка ---");
         Vehicle selected = service.AssignBest(order);
         Console.WriteLine($"Выбран транспорт: {selected}");
-        Console.WriteLine($"После Strategy: {order.TotalCost:0.00}");
+        Console.WriteLine($"Стоимость доставки: {order.TotalCost:0.00}");
 
         ExtraServices services = ExtraServices.Insurance |
                                          ExtraServices.Urgent |
                                          ExtraServices.FragilePacking;
 
         IDeliveryCost finalCost = service.AddServices(order, services);
-        Console.WriteLine("Цепочка Decorator:");
+        Console.WriteLine("Дополнительные услуги:");
         Console.WriteLine(finalCost.Describe());
-        Console.WriteLine("Итог записан в Order.TotalCost = " + order.TotalCost.ToString("0.00"));
+        Console.WriteLine("Итого: " + order.TotalCost.ToString("0.00"));
 
         service.StartDelivery(order);
         service.CompleteDelivery(order);
@@ -227,7 +227,7 @@ public sealed class Demo
 
     private static void PrintReports(DeliveryService service)
     {
-        Console.WriteLine("\n=== LINQ отчеты ===");
+        Console.WriteLine("\n=== Отчеты ===");
         Console.WriteLine(Reports.Summary(service));
         Print("1. Топ транспорта", Reports.TopVehicles(service.Orders));
         Print("2. Заказы по статусам", Reports.OrdersByStatus(service.Orders));
@@ -243,10 +243,10 @@ public sealed class Demo
         Print("8. Статистика типов груза", Reports.CargoStats(service.Orders));
 
         ILookup<string, Cargo> lookup = Reports.CargoByType(service.Orders);
-        Console.WriteLine("ToLookup: типов грузов = " + lookup.Count);
-        Console.WriteLine("Join ТС-заказы: " + Reports.VehicleOrders(service.Vehicles, service.Orders).Count());
+        Console.WriteLine("Типов грузов: " + lookup.Count);
+        Console.WriteLine("Заказов с транспортом: " + Reports.VehicleOrders(service.Vehicles, service.Orders).Count());
 
-        Console.WriteLine("Обобщенный extension ToReportTable (первые два ТС):");
+        Console.WriteLine("Первые два ТС:");
         Console.WriteLine(service.Vehicles.Take(2).ToReportTable());
     }
 
@@ -284,7 +284,7 @@ public sealed class Demo
         }
         finally
         {
-            Console.WriteLine("Блок сериализации закончен (finally).");
+            Console.WriteLine("Работа с файлом завершена.");
         }
     }
 
