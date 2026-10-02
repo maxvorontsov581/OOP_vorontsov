@@ -5,11 +5,6 @@ public abstract class VehicleCreator
     public abstract Vehicle Create(string number);
 }
 
-public sealed class RefrigeratorCreator : VehicleCreator
-{
-    public override Vehicle Create(string number) => new RefrigeratorTruck(number);
-}
-
 public sealed class PlaneCreator : VehicleCreator
 {
     public override Vehicle Create(string number) => new CargoPlane(number);
