@@ -1,10 +1,5 @@
 namespace OOP.Domain;
 
-public interface IInsurable
-{
-    decimal InsuranceValue { get; }
-}
-
 public interface IStackable
 {
     bool CanStack { get; }
