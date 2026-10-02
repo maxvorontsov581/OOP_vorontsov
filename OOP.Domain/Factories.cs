@@ -5,11 +5,6 @@ public abstract class VehicleCreator
     public abstract Vehicle Create(string number);
 }
 
-public sealed class DroneCreator : VehicleCreator
-{
-    public override Vehicle Create(string number) => new DroneCourier(number);
-}
-
 public sealed class VehicleFactory
 {
     private readonly Dictionary<string, VehicleCreator> _creators = new(StringComparer.OrdinalIgnoreCase);
