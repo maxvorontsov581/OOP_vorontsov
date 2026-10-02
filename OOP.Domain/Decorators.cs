@@ -13,19 +13,6 @@ public abstract class DeliveryCostDecorator : IDeliveryCost
     public abstract string Describe();
 }
 
-public sealed class UrgencyDecorator : DeliveryCostDecorator
-{
-    private readonly decimal _multiplier;
-
-    public UrgencyDecorator(IDeliveryCost inner, decimal multiplier = 1.2m) : base(inner)
-    {
-        _multiplier = multiplier;
-    }
-
-    public override decimal Total => Inner.Total * _multiplier;
-    public override string Describe() => Inner.Describe() + $" -> срочность = {Total:0.00}";
-}
-
 public sealed class FragilePackingDecorator : DeliveryCostDecorator
 {
     private readonly IReadOnlyCollection<Cargo> _cargo;
