@@ -13,21 +13,6 @@ public abstract class DeliveryCostDecorator : IDeliveryCost
     public abstract string Describe();
 }
 
-public sealed class InsuranceDecorator : DeliveryCostDecorator
-{
-    private readonly IReadOnlyCollection<Cargo> _cargo;
-
-    public InsuranceDecorator(IDeliveryCost inner, IReadOnlyCollection<Cargo> cargo) : base(inner)
-    {
-        _cargo = cargo;
-    }
-
-    public override decimal Total
-        => Inner.Total + _cargo.Sum(x => x.DeclaredValue) * TariffConfig.Instance.InsurancePercent;
-
-    public override string Describe() => Inner.Describe() + $" -> страховка = {Total:0.00}";
-}
-
 public sealed class UrgencyDecorator : DeliveryCostDecorator
 {
     private readonly decimal _multiplier;
