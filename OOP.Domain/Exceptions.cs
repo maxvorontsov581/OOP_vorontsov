@@ -6,11 +6,6 @@ public class LogisticsException : Exception
     public LogisticsException(string message, Exception inner) : base(message, inner) { }
 }
 
-public sealed class RouteNotFoundException : LogisticsException
-{
-    public RouteNotFoundException(string message) : base(message) { }
-}
-
 public sealed class InvalidOrderStateException : LogisticsException
 {
     public InvalidOrderStateException(string message) : base(message) { }
