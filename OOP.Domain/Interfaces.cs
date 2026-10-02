@@ -1,10 +1,5 @@
 namespace OOP.Domain;
 
-public interface IValidator<in T>
-{
-    ValidationResult Validate(T item);
-}
-
 public sealed class ValidationResult
 {
     public bool IsValid { get; }
