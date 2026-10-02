@@ -51,11 +51,3 @@ public class Repository<T> : IReadOnlyRepository<T>, IEnumerable<T> where T : cl
     public void Clear() => _items.Clear();
     public int Count => _items.Count;
 }
-
-public static class ReportExtensions
-{
-    public static string ToReportTable<T>(this IEnumerable<T> items)
-    {
-        return string.Join(Environment.NewLine, items.Select(x => "- " + x));
-    }
-}
