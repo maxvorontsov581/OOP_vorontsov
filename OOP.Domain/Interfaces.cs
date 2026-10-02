@@ -1,10 +1,5 @@
 namespace OOP.Domain;
 
-public interface ITemperatureSensitive
-{
-    double RequiredTemperatureC { get; }
-}
-
 public interface IInsurable
 {
     decimal InsuranceValue { get; }
