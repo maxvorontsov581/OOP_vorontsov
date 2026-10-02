@@ -6,11 +6,6 @@ public class LogisticsException : Exception
     public LogisticsException(string message, Exception inner) : base(message, inner) { }
 }
 
-public sealed class IncompatibleCargoException : LogisticsException
-{
-    public IncompatibleCargoException(string message) : base(message) { }
-}
-
 public sealed class VehicleOverloadException : LogisticsException
 {
     public VehicleOverloadException(string message) : base(message) { }
